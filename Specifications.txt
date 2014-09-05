@@ -1,0 +1,24 @@
+Asa cum am stabilit, te rugam sa iti aloci 6-7 zile pentru a o realiza. 
+Nu ne intereseaza neaparat sa o termini 100%, 
+ci sa pui in aplicare toate technologiile de mai jos si sa o duci intr-un punct din care poate fi usor completata sau extinsa. 
+Eu ti-as propune sa ne vedem miercurea viitoare, candva intre 9 si 16 - alege tu o ora si da-ne de stire cu o zi, doua inainte.
+ 
+*
+Afisarea intr-un grid a datelor din doua tabele relationate. Sa presupunem ca ai tabelele (in paranteza sunt numele coloanelor, pentru fiecare tabela):
+ 
+Category (CategoryId, Name), Product (ProductId, Name, Price, Archived). Relatia dintre ele este M:N
+ 
+Scrie in ASP.NET MVC4/5 o interfata grafica care consta dintr-o pagina care contine un grid cu urmatoarele coloane:
+ 
+Category Name, Product Name, Price, Actions
+ 
+pentru a prezenta datele din cele doua tabele + o coloana (cu titlul Actions) care contine un link "Archive".
+ 
+Un click pe acel link va arhiva Produsul corespunzator (campul Archive din tabele Product va fi True), 
+iar acel produs nu va mai fi afisat.  Foloseste un dialog de confirmare, pentru a preveni arhivarea accidentala a produselor.
+
+Deasupra gridului, vom avea un link pentru fiecare litera din alfabet, iar actionarea unuia din aceste linkuri va produce sortarea datelor,
+gridul prezentand doar produsele care incep cu litera respectiva. Initial nu va exista nici o sortare.
+ 
+Datele vor fi obtinute de catre GUI prin accesarea unui service scris in WCF, care va folosi un nivel de acces la date scris in NHibernate.
+Cam astea ar fi cerintele. Ca si cerinte ne-functionale ar fi respectarea cat mai buna a principiilor S.O.L.I.D., despre care am vorbit si la interviu.

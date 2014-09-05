@@ -1,0 +1,67 @@
+﻿@model Inventory.Models.InventoryModel
+
+@using Inventory.Controllers
+@using Inventory.Models
+@{
+	ViewBag.Title = "Home Page";
+}
+
+<style type="text/css">
+	.webgrid {
+		border: 1px;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	.textRight { text-align: right; }
+</style>
+
+@Html.Label("Inventory Category Products", null, new {style = "font-size:20px;"}) 
+<br/>
+<br />
+@Html.Label("Filter Products starting with letter:", null, new {style = "font-size:14px;"})
+
+<br />
+@{
+	char alphaStart = Char.Parse("A");
+	char alphaEnd = Char.Parse("Z");
+	for (char i = alphaStart; i <= alphaEnd; i++)
+	{
+		string anchorLetter = i.ToString();
+
+
+		@Html.ActionLink(anchorLetter, "Index", new { letter = anchorLetter }, anchorLetter == Model.FilterLetter ? new { @style = "font-size:300%;" } : new { @style = "font-size:100%;" })
+		<span></span>
+	}
+	<span></span>
+	<span>--</span>
+	@Html.ActionLink("(Reset)", "Index", new {letter = ""})
+	
+}
+
+<br />
+	
+@{
+	var grid = new WebGrid(rowsPerPage: InventoryModel.PageSize);
+	List<WebGridColumn> webGridColumns = new List<WebGridColumn>
+	                                     {
+		                                     grid.Column("CategoryName", "Category Name"),
+		                                     grid.Column("ProductName", "Product Name"),
+		                                     grid.Column("Price", "Price (€)", style: "textRight"),
+		                                     grid.Column("Actions", format: item => @Html.ActionLink("Archive", "Archive",
+			                                     new {id = item.ProductId},
+			                                     new {onclick = "return confirm('Are you sure you wish to Archive this Product?');"}),
+			                                     canSort: false)
+	                                     };
+	grid.Bind(Model.CategoryProducts, autoSortAndPage: false,rowCount: Model.TotalRows);
+}
+
+@grid.GetHtml("webGrid", "header",
+	alternatingRowStyle: "alt",
+	mode: WebGridPagerModes.All,
+	firstText: "First",
+	previousText: "Prev",
+	nextText: "Next",
+	lastText: "Last",
+	columns: webGridColumns
+	)

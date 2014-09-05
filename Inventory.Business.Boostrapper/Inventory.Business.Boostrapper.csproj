@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{466DCD91-60BC-43D0-AB5D-1D59C9F4C987}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Inventory.Business.Boostrapper</RootNamespace>
+    <AssemblyName>Inventory.Business.Boostrapper</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MEFLoader.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Common.Contracts\Core.Common.Contracts.csproj">
+      <Project>{9A8C4E83-492E-41DA-B596-FEAAA58DF69C}</Project>
+      <Name>Core.Common.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inventory.Business.Managers\Inventory.Business.Managers.csproj">
+      <Project>{05B51A49-592C-4802-A8E0-1E8E1B1774A6}</Project>
+      <Name>Inventory.Business.Managers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inventory.Client.Contracts\Inventory.Client.Contracts.csproj">
+      <Project>{94918A56-28B2-420D-BC90-6C8893AD1DFA}</Project>
+      <Name>Inventory.Client.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inventory.Data.Contracts\Inventory.Data.Contracts.csproj">
+      <Project>{859D2266-7CBE-4B84-B76D-F45C8D6CD867}</Project>
+      <Name>Inventory.Data.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Inventory.Data\Inventory.Data.csproj">
+      <Project>{95DD557E-88F9-4D34-8787-14A7723054EB}</Project>
+      <Name>Inventory.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
